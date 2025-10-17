@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turismo Volcánico de El Salvador - Explora Volcanes de Aventura</title>
+    <meta name="description" content="Descubre los volcanes de El Salvador: Izalco, Conchagua e Ilamatepec. Tours guiados, experiencias únicas y aventuras volcánicas seguras.">
+    <link rel="canonical" href="https://turismovolcanico.sv">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome para iconos de redes sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --volcanic-orange: 12 100% 50%;
+            --volcanic-dark: 240 10% 10%;
+            --crater-blue: 210 100% 50%;
+            --forest-green: 142 76% 36%;
+            --ash-gray: 240 10% 97%;
+            --earth-brown: 25 95% 53%;
+            --lava-red: 0 84% 60%;
+            --sunset-yellow: 45 100% 51%;
+            --volcanic-purple: 270 70% 50%;
+        }
+        
+        .bg-volcanic-orange { background-color: hsl(var(--volcanic-orange)) !important; }
+        .bg-volcanic-dark { background-color: hsl(var(--volcanic-dark)) !important; }
+        .bg-crater-blue { background-color: hsl(var(--crater-blue)) !important; }
+        .bg-forest-green { background-color: hsl(var(--forest-green)) !important; }
+        .bg-ash-gray { background-color: hsl(var(--ash-gray)) !important; }
+        .bg-earth-brown { background-color: hsl(var(--earth-brown)) !important; }
+        .bg-lava-red { background-color: hsl(var(--lava-red)) !important; }
+        .bg-sunset-yellow { background-color: hsl(var(--sunset-yellow)) !important; }
+        .bg-volcanic-purple { background-color: hsl(var(--volcanic-purple)) !important; }
+        
+        .text-volcanic-orange { color: hsl(var(--volcanic-orange)) !important; }
+        .text-volcanic-dark { color: hsl(var(--volcanic-dark)) !important; }
+        .text-crater-blue { color: hsl(var(--crater-blue)) !important; }
+        .text-forest-green { color: hsl(var(--forest-green)) !important; }
+        .text-earth-brown { color: hsl(var(--earth-brown)) !important; }
+        .text-lava-red { color: hsl(var(--lava-red)) !important; }
+        .text-sunset-yellow { color: hsl(var(--sunset-yellow)) !important; }
+        .text-volcanic-purple { color: hsl(var(--volcanic-purple)) !important; }
+        
+        .border-volcanic-orange { border-color: hsl(var(--volcanic-orange)) !important; }
+        
+        .btn-volcanic {
+            background: linear-gradient(135deg, hsl(var(--volcanic-orange)) 0%, hsl(var(--lava-red)) 100%) !important;
+            color: white !important;
+            padding: 12px 24px !important;
+            border-radius: 8px !important;
+            font-weight: 600 !important;
+            transition: all 0.3s ease !important;
+            border: none !important;
+            cursor: pointer !important;
+            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3) !important;
+        }
+        
+        .btn-volcanic:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 10px 25px rgba(255, 69, 0, 0.4) !important;
+            background: linear-gradient(135deg, hsl(var(--lava-red)) 0%, hsl(var(--volcanic-orange)) 100%) !important;
+        }
+        
+        .mission-vision-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+            border-left: 5px solid hsl(var(--volcanic-orange)) !important;
+            border-radius: 16px !important;
+            padding: 30px !important;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
+            transition: all 0.3s ease !important;
+            height: 100% !important;
+            color: white !important;
+        }
+        
+        .mission-vision-card:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 12px 30px rgba(255, 69, 0, 0.4) !important;
+        }
+        
+        .volcano-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%) !important;
+            border-radius: 20px !important;
+            overflow: hidden !important;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.15) !important;
+            transition: all 0.3s ease !important;
+            border: 1px solid rgba(255, 69, 0, 0.1) !important;
+        }
+        
+        .volcano-card:hover {
+            transform: translateY(-10px) !important;
+            box-shadow: 0 20px 45px rgba(255, 69, 0, 0.2) !important;
+        }
+        
+        /* CORRECCIÓN DEFINITIVA: Texto oscuro para las tarjetas de volcanes */
+        .volcano-card * {
+            color: #1f2937 !important;
+        }
+        
+        .volcano-card .text-volcanic-orange,
+        .volcano-card .text-crater-blue,
+        .volcano-card .text-earth-brown,
+        .volcano-card .text-forest-green {
+            color: inherit !important;
+        }
+        
+        .volcano-card p,
+        .volcano-card li {
+            color: #4b5563 !important;
+        }
+        
+        /* Fondo con gradiente volcánico */
+        .volcanic-bg {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%) !important;
+        }
+        
+        .section-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+        }
+        
+        /* Modal para mostrar imágenes */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            max-width: 80%;
+            max-height: 80%;
+            width: auto;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 0 40px rgba(255, 69, 0, 0.6);
+            object-fit: contain;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 1001;
+        }
+        
+        .close-modal:hover {
+            color: hsl(var(--volcanic-orange));
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .volcano-card {
+                margin-bottom: 2rem;
+            }
+            
+            .modal-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
+            
+            .close-modal {
+                top: 10px;
+                right: 15px;
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-volcanic-dark text-white">
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 bg-volcanic-dark/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-volcanic-orange rounded-full flex items-center justify-center shadow-md">
+                        <span class="text-white font-bold text-sm">🌋</span>
+                    </div>
+                    <span class="text-xl font-bold text-white">Turismo Volcánico SV</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-gray-300 hover:text-volcanic-orange transition-colors fw-medium">Inicio</a>
+                    <a href="#volcanes" class="text-gray-300 hover:text-volcanic-orange transition-colors fw-medium">Volcanes</a>
+                    <a href="#servicios" class="text-gray-300 hover:text-volcanic-orange transition-colors fw-medium">Nosotros</a>
+                    <a href="#contacto" class="text-gray-300 hover:text-volcanic-orange transition-colors fw-medium">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden volcanic-bg">
+        <!-- Video Background -->
+        <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover">
+            <source src="video/vol.mp4" type="video/mp4">
+        </video>
+        
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black/80"></div>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                Turismo Volcánico de
+                <span class="block text-volcanic-orange">El Salvador</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                Explora la magia, aventura y naturaleza de nuestros volcanes. 
+                Donde la tierra respira, tú vives la aventura.
+            </p>
+
+            <div class="grid grid-cols-3 gap-4 max-w-md mx-auto mb-16">
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-bold text-volcanic-orange">3</div>
+                    <div class="text-sm text-gray-300">Volcanes</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-bold text-crater-blue">2,381m</div>
+                    <div class="text-sm text-gray-300">Altura Máxima</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-bold text-forest-green">👥</div>
+                    <div class="text-sm text-gray-300">Tours Guiados</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <button onclick="document.getElementById('volcanes').scrollIntoView({behavior: 'smooth'})" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white hover:text-volcanic-orange transition-colors animate-bounce">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </button>
+    </section>
+
+    <!-- Volcanes Section -->
+    <section id="volcanes" class="py-20 section-bg">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                    Descubre Nuestros <span class="text-volcanic-orange">Volcanes</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Tres joyas naturales que te invitan a vivir experiencias únicas, 
+                    donde la majestuosidad de la tierra se encuentra con la aventura.
+                </p>
+            </div>
+
+            <!-- Volcán de Izalco -->
+            <div class="volcano-card mb-24">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                    <div class="p-8 lg:p-12 flex flex-col justify-center">
+                        <h3 class="text-3xl md:text-4xl font-bold mb-2">Volcán de Izalco</h3>
+                        <p class="text-xl text-volcanic-orange mb-6">El Faro del Pacífico</p>
+                        <p class="mb-8 leading-relaxed" style="color: #4b5563 !important;">
+                            Ubicado en el Parque Nacional Cerro Verde, el Volcán de Izalco es uno de los más jóvenes de América Central y uno de los más visitados por su impresionante cono perfecto.
+                        </p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div>
+                                <h4 class="font-semibold mb-3">Información General</h4>
+                                <ul class="space-y-2 text-sm" style="color: #4b5563 !important;">
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-volcanic-orange rounded-full mr-3"></span>Altura: 1,950 m s. n. m.</li>
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-volcanic-orange rounded-full mr-3"></span>Dificultad: Moderada</li>
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-volcanic-orange rounded-full mr-3"></span>Distancia desde San Salvador: 77 km</li>
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-volcanic-orange rounded-full mr-3"></span>Caminata: 1.5 a 2 horas de subida</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-3">Precios por persona</h4>
+                                <ul class="space-y-2 text-sm" style="color: #4b5563 !important;">
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-forest-green rounded-full mr-3"></span>Tour básico con guía: USD 20–26</li>
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-forest-green rounded-full mr-3"></span>Tour amanecer con transporte y guía: USD 25–26</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-volcanic w-fit" onclick="showImage('izalco')">Explorar Ubicación</button>
+                    </div>
+                    <div class="relative h-80 lg:h-auto">
+                        <img src="img/iza.jpg" alt="Volcán de Izalco" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Volcán de Conchagua -->
+            <div class="volcano-card mb-24">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                    <div class="relative h-80 lg:h-auto lg:order-1">
+                        <img src="img/CON.jpg" alt="Volcán de Conchagua" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8 lg:p-12 flex flex-col justify-center lg:order-2">
+                        <h3 class="text-3xl md:text-4xl font-bold mb-2">Volcán de Conchagua</h3>
+                        <p class="text-xl text-crater-blue mb-6">Amanecer sobre el Golfo de Fonseca</p>
+                        <p class="mb-8 leading-relaxed" style="color: #4b5563 !important;">
+                            Situado en La Unión, el Volcán de Conchagua es conocido por ofrecer uno de los amaneceres más hermosos de Centroamérica, donde el sol emerge entre las islas del Golfo.
+                        </p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div>
+                                <h4 class="font-semibold mb-3">Experiencias Destacadas</h4>
+                                <ul class="space-y-2 text-sm" style="color: #4b5563 !important;">
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-crater-blue rounded-full mr-3"></span>Amanecer panorámico único</li>
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-crater-blue rounded-full mr-3"></span>Campamento en el Mirador Espíritu de la Montaña</li>
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-crater-blue rounded-full mr-3"></span>Excursiones guiadas con comunidades locales</li>
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-crater-blue rounded-full mr-3"></span>Observación de aves y fotografía de paisaje</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-3">Servicios Incluidos</h4>
+                                <ul class="space-y-2 text-sm" style="color: #4b5563 !important;">
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-forest-green rounded-full mr-3"></span>Camping y glamping ecológico</li>
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-forest-green rounded-full mr-3"></span>Tours de amanecer</li>
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-forest-green rounded-full mr-3"></span>Guías de comunidades locales</li>
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-forest-green rounded-full mr-3"></span>Observación de aves especializada</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-volcanic w-fit" onclick="showImage('conchagua')">Explorar Ubicación</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Volcán Ilamatepec -->
+            <div class="volcano-card">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                    <div class="p-8 lg:p-12 flex flex-col justify-center">
+                        <h3 class="text-3xl md:text-4xl font-bold mb-2">Volcán Ilamatepec</h3>
+                        <p class="text-xl text-earth-brown mb-6">El Gigante de Santa Ana</p>
+                        <p class="mb-8 leading-relaxed" style="color: #4b5563 !important;">
+                            El volcán más alto de El Salvador, con 2,381 metros sobre el nivel del mar, ofrece una experiencia impresionante con su cráter color turquesa y paisajes que parecen de otro planeta.
+                        </p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div>
+                                <h4 class="font-semibold mb-3">Experiencias Destacadas</h4>
+                                <ul class="space-y-2 text-sm" style="color: #4b5563 !important;">
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-earth-brown rounded-full mr-3"></span>Caminata al cráter turquesa</li>
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-earth-brown rounded-full mr-3"></span>Fotografía de paisajes únicos</li>
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-earth-brown rounded-full mr-3"></span>Picnic y degustación de productos locales</li>
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-earth-brown rounded-full mr-3"></span>Tour combinado con Lago de Coatepeque</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-3">Servicios Incluidos</h4>
+                                <ul class="space-y-2 text-sm" style="color: #4b5563 !important;">
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-forest-green rounded-full mr-3"></span>Caminatas al cráter</li>
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-forest-green rounded-full mr-3"></span>Tours fotográficos profesionales</li>
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-forest-green rounded-full mr-3"></span>Degustación gastronómica local</li>
+                                    <li class="flex items-center"><span class="w-2 h-2 bg-forest-green rounded-full mr-3"></span>Paquetes combinados con lago</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-volcanic w-fit" onclick="showImage('ilamatepec')">Explorar Ubicación</button>
+                    </div>
+                    <div class="relative h-80 lg:h-auto">
+                        <img src="img/ILA.jpg" alt="Volcán Ilamatepec" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nosotros Section -->
+    <section id="servicios" class="py-20 volcanic-bg">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                    <span class="text-volcanic-orange">Nosotros</span>
+                </h3>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="mission-vision-card text-center">
+                                <div class="text-3xl font-bold text-volcanic-orange mb-3">MISIÓN</div>
+                                <p class="text-gray-300 mb-0">
+                                    Ofrecer tours y servicios turísticos en los volcanes más emblemáticos de El Salvador, brindando a cada visitante una experiencia única de aventura, naturaleza y cultura, con atención profesional, seguridad, y compromiso con el medio ambiente y el desarrollo local.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mission-vision-card text-center">
+                                <div class="text-3xl font-bold text-volcanic-orange mb-3">VISIÓN</div>
+                                <p class="text-gray-300 mb-0">
+                                    Ser la tour operadora líder en turismo volcánico sostenible en El Salvador, reconocida por ofrecer experiencias seguras, emocionantes y responsables que muestren la belleza natural del país y beneficien a las comunidades locales.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-20 volcanic-bg text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl md:text-4xl font-bold mb-4">
+                    Contáctanos
+                </h3>
+                <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+                    ¿Listo para vivir la aventura volcánica? Contáctanos y comienza tu experiencia única en El Salvador.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div>
+                    <h4 class="text-2xl font-bold mb-6">Información de Contacto</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-4">📧</span>
+                            <div>
+                                <p class="font-semibold">Email</p>
+                                <p class="text-gray-300">Valhallatours@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-4">📱</span>
+                            <div>
+                                <p class="font-semibold">WhatsApp</p>
+                                <p class="text-gray-300">+503 7000-0000</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h5 class="text-xl font-semibold mb-4">Síguenos en Redes Sociales</h5>
+                        <div class="flex space-x-4">
+                            <a href="https://www.instagram.com/valhallatours_sv?igsh=cGgxbXd3ZHUycTk5" target="_blank" class="social-icon w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+                                <i class="fab fa-instagram text-white fs-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Nombre Completo</label>
+                            <input type="text" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-volcanic-orange">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-volcanic-orange">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Teléfono</label>
+                            <input type="tel" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-volcanic-orange">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Volcán de Interés</label>
+                            <select class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-volcanic-orange">
+                                <option value="izalco" class="text-gray-900">Volcán de Izalco</option>
+                                <option value="conchagua" class="text-gray-900">Volcán de Conchagua</option>
+                                <option value="ilamatepec" class="text-gray-900">Volcán Ilamatepec</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Mensaje</label>
+                            <textarea rows="4" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-volcanic-orange resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="btn-volcanic w-full">
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4">Turismo Volcánico de El Salvador</h3>
+                <p class="text-gray-300 mb-6 max-w-2xl mx-auto">
+                    "Donde la tierra respira, tú vives la aventura." Experimenta la magia, 
+                    aventura y naturaleza de nuestros volcanes de manera segura, sostenible y fascinante.
+                </p>
+                <div class="flex flex-wrap justify-center gap-8 text-sm text-gray-400">
+                    <span>© 2025 Turismo Volcánico SV</span>
+                    <span>|</span>
+                    <span>Términos y Condiciones</span>
+                    <span>|</span>
+                    <span>Política de Privacidad</span>
+                    <span>|</span>
+                    <span>Contacto</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal para mostrar imágenes -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage" src="" alt="Imagen del volcán">
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript for smooth scrolling and interactions -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('bg-volcanic-dark');
+                header.classList.remove('bg-volcanic-dark/95');
+            } else {
+                header.classList.add('bg-volcanic-dark/95');
+                header.classList.remove('bg-volcanic-dark');
+            }
+        });
+
+        // Funcionalidad para mostrar imágenes de volcanes
+        function showImage(volcano) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            
+            const images = {
+                'izalco': 'img/iz.jpg',
+                'conchagua': 'img/co.jpg',
+                'ilamatepec': 'img/il.jpg'
+            };
+            
+            modalImg.src = images[volcano];
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Cerrar modal al hacer clic fuera de la imagen
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Te contactaremos pronto para planificar tu aventura volcánica.');
+            this.reset();
+        });
+    </script>
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TouristAttraction",
+        "name": "Turismo Volcánico de El Salvador",
+        "description": "Explora los volcanes de El Salvador con tours guiados seguros. Volcán de Izalco, Conchagua e Ilamatepec.",
+        "url": "https://turismovolcanico.sv",
+        "telephone": "+503-7000-0000",
+        "email": "info@turismovolcanico.sv",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "SV",
+            "addressLocality": "San Salvador"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "13.6929",
+            "longitude": "-89.2182"
+        }
+    }
+    </script>
+</body>
+</html>
